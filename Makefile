@@ -6,7 +6,7 @@
 #    By: pojea-lo <pojea-lo@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 15:46:47 by pojea-lo          #+#    #+#              #
-#    Updated: 2021/11/01 16:35:10 by pojea-lo         ###   ########.fr        #
+#    Updated: 2021/11/09 14:05:54 by pojea-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ SRC = ft_isalpha.c\
 	  ft_calloc.c\
 	  ft_strdup.c\
 	  ft_substr.c\
-		
+	  ft_strjoin.c\
+	  ft_strtrim.c\
+	  ft_split.c
 
 OBJ = $(SRC:%.c=%.o)
 

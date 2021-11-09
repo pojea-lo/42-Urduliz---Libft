@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pojea-lo <pojea-lo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/26 11:37:43 by pojea-lo          #+#    #+#             */
-/*   Updated: 2021/11/03 11:08:16 by pojea-lo         ###   ########.fr       */
+/*   Created: 2021/11/03 13:00:24 by pojea-lo          #+#    #+#             */
+/*   Updated: 2021/11/03 13:00:59 by pojea-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t num)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned char	*csrc;
-	unsigned char	*cdst;
-	int		i;	
+	char	*des;
 
-	i = 0;
-	csrc = (unsigned char *)src;
-	cdst = (unsigned char *)dst;
-	if (dst == NULL || src == NULL)
+	des = (char *)malloc ((ft_strlen (s1) + ft_strlen (s2)) + 1);
+	if (des == NULL)
 		return (NULL);
-	if (dst < src)
-	{
-		while (num--)
-			*cdst++ = *csrc++;
-		return (dst);
-	}
-	else
-	{
-		while (num--)
-			*(cdst + num) = *(csrc + num);
-		return (dst);
-	}
+	ft_strlcpy (des, s1, ft_strlen(s1) + 1);
+	ft_strlcat (des, s2, (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	return (des);
 }
