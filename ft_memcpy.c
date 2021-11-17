@@ -6,7 +6,7 @@
 /*   By: pojea-lo <pojea-lo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:08:59 by pojea-lo          #+#    #+#             */
-/*   Updated: 2021/10/26 11:32:31 by pojea-lo         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:55:23 by pojea-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dest, const void *org, size_t n)
 
 	cdest = (char *)dest;
 	corg = (char *)org;
+	if (dest == org || !n)
+		return (dest);
 	i = 0;
 	while (i < n)
 	{

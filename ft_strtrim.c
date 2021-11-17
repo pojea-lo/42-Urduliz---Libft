@@ -6,7 +6,7 @@
 /*   By: pojea-lo <pojea-lo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 19:23:46 by pojea-lo          #+#    #+#             */
-/*   Updated: 2021/11/07 19:25:18 by pojea-lo         ###   ########.fr       */
+/*   Updated: 2021/11/17 11:10:51 by pojea-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		k;
 
 	i = 0;
+	if (!s1 || !set)
+		return (NULL);
 	if (*set != 00)
 	{
 		i = ft_start (s1, set);
@@ -42,8 +44,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		}
 		return ((char *)des);
 	}
-	des = ft_return(s1, i, k);
-	return (des);
+	return (ft_return (s1, i, k));
 }
 
 static int	ft_start(char const *s1, char const *set)

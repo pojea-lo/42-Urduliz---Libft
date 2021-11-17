@@ -6,7 +6,7 @@
 /*   By: pojea-lo <pojea-lo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:57:21 by pojea-lo          #+#    #+#             */
-/*   Updated: 2021/11/02 18:05:46 by pojea-lo         ###   ########.fr       */
+/*   Updated: 2021/11/17 10:56:21 by pojea-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*des;
 
+	if (s == NULL)
+		return (NULL);
 	des = ft_malloc(s, start, len);
 	if (des == NULL)
 		return (NULL);

@@ -6,7 +6,7 @@
 #    By: pojea-lo <pojea-lo@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 15:46:47 by pojea-lo          #+#    #+#              #
-#    Updated: 2021/11/09 14:05:54 by pojea-lo         ###   ########.fr        #
+#    Updated: 2021/11/16 14:25:25 by pojea-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,34 +39,52 @@ SRC = ft_isalpha.c\
 	  ft_substr.c\
 	  ft_strjoin.c\
 	  ft_strtrim.c\
-	  ft_split.c
+	  ft_split.c\
+	  ft_itoa.c\
+	  ft_strmapi.c\
+	  ft_striteri.c\
+	  ft_putchar_fd.c\
+	  ft_putstr_fd.c\
+  	  ft_putendl_fd.c\
+	  ft_putnbr_fd.c	  
 
-OBJ = $(SRC:%.c=%.o)
+SRCS_BONUS = ft_lstnew.c\
+			 ft_lstadd_front.c\
+			 ft_lstsize.c\
+			 ft_lstlast.c\
+			 ft_lstadd_back.c\
+			 ft_lstdelone.c\
+			 ft_lstclear.c\
+			 ft_lstiter.c\
+			 ft_lstmap.c
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+OBJS = $(SRC:.c=.o)
+
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
+CC = gcc -Wall -Werror -Wextra
+
 LIBC = ar rcs
 
-RM = rm -r
+RM = rm -f
+
+%.o: %.c
+	$(CC) -c $< -o $@
 
 all: $(NAME)
 
-.o: .c
-	@echo "Compiling: $<...."
-	$(CC) $(CFLAGS) -c $< -o $@
-	@echo "da  igual"
-
-$(NAME): $(OBJ)
+$(NAME): $(OBJS)
 	$(LIBC) $@ $^
 
+bonus: $(OBJS_BONUS)
+	$(LIBC) $(NAME) $^
+
 clean:
-	$(RM) $(OBJ)<F6>
-	@echo "Objects files cleaned!"
+	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
 	$(RM) $(NAME)
-	@echo "Exec file cleaned!"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean bonus fclean re

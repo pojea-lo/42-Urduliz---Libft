@@ -6,7 +6,7 @@
 /*   By: pojea-lo <pojea-lo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:38:03 by pojea-lo          #+#    #+#             */
-/*   Updated: 2021/11/09 17:38:21 by pojea-lo         ###   ########.fr       */
+/*   Updated: 2021/11/17 14:37:18 by pojea-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static size_t	ft_count(char const *s, char c);
 static char		*ft_copy(char const *s, int i, int j);
+static char		**ft_malloc(char const *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
@@ -24,23 +25,23 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	l = 0;
-	r = (char **)malloc (sizeof(char *) * (ft_count(s, c) + 1));
-	if (r == NULL)
+	if (s == NULL)
 		return (NULL);
-	while (s[i] != '\0')
+	r = ft_malloc (s, c);
+	while (s[i] != '\0' && r != NULL)
 	{
 		if (s[i] != c)
 		{
 			j = i;
 			while (s[i] != c && i < (int)ft_strlen(s))
 				i++;
-			r[l] = ft_copy(s, i, j);
-			l++;
+			r[l++] = ft_copy(s, i, j);
 		}
 		else
 			i++;
 	}
-	r[l] = NULL;
+	if (r != NULL)
+		r[l] = NULL;
 	return (r);
 }
 
@@ -75,4 +76,14 @@ static size_t	ft_count(char const *s, char c)
 		i++;
 	}
 	return (count);
+}
+
+static char	**ft_malloc(char const *s, char c)
+{
+	char	**r;
+
+	r = (char **)malloc (sizeof(char *) * (ft_count(s, c) + 1));
+	if (r == NULL)
+		r = NULL;
+	return (r);
 }

@@ -6,7 +6,7 @@
 /*   By: pojea-lo <pojea-lo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 12:33:56 by pojea-lo          #+#    #+#             */
-/*   Updated: 2021/10/29 12:34:51 by pojea-lo         ###   ########.fr       */
+/*   Updated: 2021/11/16 16:57:54 by pojea-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	n;
-	int	r;
+	int		i;
+	int		n;
+	long	r;
 
 	i = 0;
 	n = 1;
 	r = 0;
-	if (str == NULL)
-		return (0);
 	while ((str[i] == ' ' || str[i] == '\f' || str[i] == '\n') || \
 			(str[i] == '\r' || str[i] == '\t' || str[i] == '\v'))
 		i++;
@@ -32,9 +30,11 @@ int	ft_atoi(const char *str)
 			n = -n;
 		i++;
 	}	
-	while (str[i] > 47 && str[i] < 58 && str[i] != '\0')
+	while (str[i] > 47 && str[i] < 58)
 	{
 		r = (str[i] - '0') + (r * 10);
+		if ((r * n < -2147483648) || (r * n > 2147483647))
+			return ((r * n < -2147483648) - 1);
 		i++;
 	}
 	return (r * n);
